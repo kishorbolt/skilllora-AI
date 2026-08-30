@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import type { UserProfile } from '../../types';
-import { api } from '../../services/api';
+import { api, BACKEND_URL } from '../../services/api';
 import { FileText, Upload, Loader2, Sparkles, Trash2, CheckCircle2, AlertCircle, Eye, RefreshCw } from 'lucide-react';
 
 interface ResumeUploadCardProps {
@@ -164,7 +164,7 @@ export const ResumeUploadCard: React.FC<ResumeUploadCardProps> = ({ profile, onP
             
             <div className="flex items-center space-x-2 shrink-0 flex-wrap gap-y-2">
               <a 
-                href={`http://127.0.0.1:8000${profile.resume_url}`} 
+                href={profile.resume_url.startsWith('http') || profile.resume_url.startsWith('blob:') || profile.resume_url.startsWith('data:') ? profile.resume_url : `${BACKEND_URL}${profile.resume_url}`} 
                 target="_blank" 
                 rel="noreferrer"
                 className="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold rounded-lg transition-colors flex items-center space-x-1.5 text-xs shadow-2xs"

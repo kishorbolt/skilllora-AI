@@ -5,6 +5,7 @@ import { Target, Calendar, Flame, Award, ChevronRight, ChevronDown, User, Edit3,
 import { EditProfileModal } from '../modals/EditProfileModal';
 import { AuthModal } from '../modals/AuthModal';
 import { useLearner } from '../../context/LearnerContext';
+import { BACKEND_URL } from '../../services/api';
 
 interface HeaderProps {
   profile: UserProfile | null;
@@ -140,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({ profile: propProfile, activeTab,
               >
                 {profile.avatar_url ? (
                   <img
-                    src={profile.avatar_url.startsWith('http') || profile.avatar_url.startsWith('blob:') || profile.avatar_url.startsWith('data:') ? profile.avatar_url : `http://127.0.0.1:8000${profile.avatar_url}`}
+                    src={profile.avatar_url.startsWith('http') || profile.avatar_url.startsWith('blob:') || profile.avatar_url.startsWith('data:') ? profile.avatar_url : `${BACKEND_URL}${profile.avatar_url}`}
                     alt={profile.name}
                     className="w-8 h-8 rounded-full object-cover border border-brand-500 shadow-2xs"
                   />

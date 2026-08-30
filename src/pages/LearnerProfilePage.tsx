@@ -8,6 +8,7 @@ import { AddInterestModal } from '../components/modals/AddInterestModal';
 import { ResumeUploadCard } from '../components/profile/ResumeUploadCard';
 import { EmptyState } from '../components/common/EmptyState';
 import { SkeletonCard } from '../components/common/SkeletonLoader';
+import { BACKEND_URL } from '../services/api';
 import {
   User, ShieldCheck, Sparkles, Bookmark, BookOpen, ExternalLink,
   Plus, Trash2, MapPin, Mail, Phone, Globe, Briefcase, Award,
@@ -70,7 +71,7 @@ export const LearnerProfilePage: React.FC<LearnerProfilePageProps> = ({ profile:
           <div className="relative shrink-0">
             {profile?.avatar_url ? (
               <img
-                src={profile.avatar_url.startsWith('http') || profile.avatar_url.startsWith('blob:') || profile.avatar_url.startsWith('data:') ? profile.avatar_url : `http://127.0.0.1:8000${profile.avatar_url}`}
+                src={profile.avatar_url.startsWith('http') || profile.avatar_url.startsWith('blob:') || profile.avatar_url.startsWith('data:') ? profile.avatar_url : `${BACKEND_URL}${profile.avatar_url}`}
                 alt={profile.name}
                 className="w-20 h-20 rounded-full object-cover border-2 border-brand-500 shadow-sm"
               />

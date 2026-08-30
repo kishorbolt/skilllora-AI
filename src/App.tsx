@@ -61,7 +61,7 @@ export function AppContent() {
       if (graph) setSkillNodes(graph.nodes);
       if (ana) setAnalytics(ana);
     } catch (e) {
-      console.warn("Backend loading notice. Ensure FastAPI backend is running on http://127.0.0.1:8000.", e);
+      console.warn("Backend loading notice. Please check the backend connection.", e);
     }
   }, []);
 
