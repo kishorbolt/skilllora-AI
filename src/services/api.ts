@@ -5,7 +5,14 @@ import type {
   AuthUser, AuthTokenResponse
 } from '../types';
 
-export const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+const rawBase = (
+  import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'
+).trim().replace(/\/+$/, '');
+
+const API_BASE = rawBase.endsWith('/api')
+  ? rawBase
+  : `${rawBase}/api`;
+
 export const BACKEND_URL = API_BASE.replace(/\/api\/?$/, '');
 
 export function getMediaUrl(path: string | undefined | null): string {
